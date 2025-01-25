@@ -9,6 +9,7 @@ import cabinet4 from './assets/images/cabinet/cabinet4.jpeg';
 import cabinet5 from './assets/images/cabinet/cabinet5.jpeg';
 import doctolib from './assets/images/banniere_linkedin_psychologue.jpg';
 import logo from './assets/images/logo.png';
+import { ContactForm } from './assets/components/ContactForm';
 
 function App() {
   const [activeSection, setActiveSection] = useState('accueil');
@@ -230,38 +231,7 @@ function App() {
                   </div>
                 </div>
               </div>
-              <form className="space-y-6 bg-white p-8 rounded-lg shadow-md">
-                <div>
-                  <label htmlFor="name" className="block text-neutral-700 mb-2">Nom</label>
-                  <input
-                    type="text"
-                    id="name"
-                    className="w-full p-3 border border-amber-200 rounded-lg focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-colors"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-neutral-700 mb-2">Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    className="w-full p-3 border border-amber-200 rounded-lg focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-colors"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="message" className="block text-neutral-700 mb-2">Message</label>
-                  <textarea
-                    id="message"
-                    rows={4}
-                    className="w-full p-3 border border-amber-200 rounded-lg focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-colors"
-                  ></textarea>
-                </div>
-                <button
-                  type="submit"
-                  className="w-full bg-amber-600 text-white px-6 py-3 rounded-lg hover:bg-amber-700 transform hover:scale-105 transition-all duration-300"
-                >
-                  Envoyer
-                </button>
-              </form>
+              <ContactForm />
             </div>
           </div>
         </section>
