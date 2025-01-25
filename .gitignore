@@ -1,0 +1,54 @@
+# .gitignore for React + Cloudflare Pages project
+
+# Dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# Build files
+/build
+/dist
+/.out
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Testing
+/coverage
+/.nyc_output
+
+# CI/CD
+.cache
+.vercel
+
+# Optional (framework specific)
+.next/
+.cache/
+.turbo
