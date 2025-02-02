@@ -9,6 +9,7 @@ import cabinet4 from './assets/images/cabinet/cabinet4.jpeg';
 import cabinet5 from './assets/images/cabinet/cabinet5.jpeg';
 import doctolib from './assets/images/banniere_linkedin_psychologue.jpg';
 import logo from './assets/images/logo.png';
+import psi from './assets/images/psi.png';
 import { ContactForm } from './assets/components/ContactForm';
 
 function App() {
@@ -40,8 +41,15 @@ function App() {
       {/* Navigation */}
       <nav className="sticky top-0 bg-white/90 backdrop-blur-sm shadow-sm z-50">
         <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center py-4"> 
-            <h1 className="text-2xl font-serif text-amber-900">Valentine VOTAVA</h1>
+          <div className="flex justify-between items-center py-4">
+            <div className="flex items-center">
+              <h1 className="text-2xl font-serif text-amber-900">Valentine VOTAVA</h1>
+              <img
+                src={psi}
+                alt="Symbôle Psi"
+                className="w-[25px] h-[25px] object-cover ml-3"
+              />
+            </div>
             <div className="hidden md:flex space-x-4">
               <a href="#accueil" className={`nav-link ${activeSection === 'accueil' ? 'text-amber-800' : ''}`}>Accueil</a>
               <a href="#presentation" className={`nav-link ${activeSection === 'presentation' ? 'text-amber-800' : ''}`}>Qui suis-je</a>
@@ -58,7 +66,7 @@ function App() {
         {/* Hero Section */}
         <section id="accueil" className="section-fade min-h-[80vh] flex items-center bg-[url('https://images.unsplash.com/photo-1527689368864-3a821dbccc34?auto=format&fit=crop&q=80')] bg-cover bg-center">
           <div className="container mx-auto px-4 py-20 bg-white/90 backdrop-blur-sm rounded-lg shadow-lg mx-4">
-            <h1 className="text-4xl md:text-5xl font-serif text-amber-900 mb-4">Mme Valentine VOTAVA</h1>
+            <h1 className="text-4xl md:text-5xl font-serif text-amber-900 mb-4">Valentine VOTAVA</h1>
             <p className="text-xl text-amber-800 mb-8">Psychologue clinicienne, Psychothérapeute</p>
             <p className="text-lg text-neutral-700 max-w-2xl">
             Un espace d’écoute bienveillant et humain, où enfants, adolescents et adultes peuvent explorer leurs émotions et leur histoire. Une approche centrée sur la compréhension et le lien, pour avancer ensemble en toute authenticité.
@@ -83,19 +91,12 @@ function App() {
                   <ul className="space-y-3">
                     <li className="flex items-start w-30">
                       <span className="text-amber-700 font-semibold">2025</span>
-                      <p className="ml-4">Formation au psychotrauma (en cours).</p>
-                    </li>
-                    <li className="flex items-start w-30">
-                      <span className="text-amber-700 font-semibold">2025</span>
-                      <p className="ml-4">Formation à l’autisme et aux troubles du neurodéveloppement (prévue en avril).</p>
-                    </li>
-                    <li className="flex items-start w-30">
-                      <span className="text-amber-700 font-semibold">2025</span>
-                      <p className="ml-4">Connaissances en CNV (Communication Non Violente) et en santé naturelle (en cours également).</p>
+                      <p className="ml-4">
+                      Psychotraumatologie : diagnostic, accompagnement, orientation - Double Hélice</p>
                     </li>
                     <li className="flex items-start">
                       <span className="text-amber-700 font-semibold">2021</span>
-                      <p className="ml-4">Master en psychologie: psychopathologie clinique psychanalytique: clinique et psychopathologies du lien social - Université d'Angers</p>
+                      <p className="ml-4">Master en psychologie: psychopathologie clinique du lien social et familial - Université d'Angers</p>
                     </li>
                     <li className="flex items-start">
                       <span className="text-amber-700 font-semibold">2019</span>
