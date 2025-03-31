@@ -89,6 +89,11 @@ function App() {
                 <div className="bg-amber-50 p-6 rounded-lg">
                   <h3 className="text-xl font-serif text-amber-900 mb-4">Formation</h3>
                   <ul className="space-y-3">
+                  <li className="flex items-start w-30">
+                      <span className="text-amber-700 font-semibold">2025</span>
+                      <p className="ml-4">
+                      Théorie polyvagale - Double Hélice</p>
+                    </li>
                     <li className="flex items-start w-30">
                       <span className="text-amber-700 font-semibold">2025</span>
                       <p className="ml-4">
