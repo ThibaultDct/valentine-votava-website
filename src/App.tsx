@@ -90,6 +90,11 @@ function App() {
                   <h3 className="text-xl font-serif text-amber-900 mb-4">Formation</h3>
                   <ul className="space-y-3">
                   <li className="flex items-start w-30">
+                      <span className="text-amber-700 font-semibold">2026</span>
+                      <p className="ml-4">
+                      Inceste et abus sexuels - Formationspsy</p>
+                    </li>
+                    <li className="flex items-start w-30">
                       <span className="text-amber-700 font-semibold">2025</span>
                       <p className="ml-4">
                       Théorie polyvagale - Double Hélice</p>
@@ -127,28 +132,13 @@ function App() {
             <h2 className="text-3xl font-serif text-amber-900 mb-12 text-center">Tarifs des Consultations</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               <div className="price-card">
-                <h3 className="text-xl text-amber-800 mb-3">Première consultation</h3>
-                <p className="text-3xl font-semibold text-amber-900 mb-2">55€</p>
-                <p className="text-neutral-600">Consultation initiale pour adultes</p>
+                <h3 className="text-xl text-amber-800 mb-3">Consultation</h3>
+                <p className="text-3xl font-semibold text-amber-900 mb-2">70€</p>
+                <p className="text-neutral-600">Consultations régulières pour enfants et adultes</p>
               </div>
               <div className="price-card">
-                <h3 className="text-xl text-amber-800 mb-3">Consultation de suivi</h3>
+                <h3 className="text-xl text-amber-800 mb-3">Tarif étudiant</h3>
                 <p className="text-3xl font-semibold text-amber-900 mb-2">50€</p>
-                <p className="text-neutral-600">Consultations régulières pour adultes</p>
-              </div>
-              <div className="price-card">
-                <h3 className="text-xl text-amber-800 mb-3">Enfant / Adolescent</h3>
-                <p className="text-3xl font-semibold text-amber-900 mb-2">60€</p>
-                <p className="text-neutral-600">Première consultation</p>
-              </div>
-              <div className="price-card">
-                <h3 className="text-xl text-amber-800 mb-3">Enfant / Adolescent - Suivi</h3>
-                <p className="text-3xl font-semibold text-amber-900 mb-2">55€</p>
-                <p className="text-neutral-600">Consultations de suivi</p>
-              </div>
-              <div className="price-card">
-                <h3 className="text-xl text-amber-800 mb-3">Tarif étudiant / Faibles revenus</h3>
-                <p className="text-3xl font-semibold text-amber-900 mb-2">40€</p>
                 <p className="text-neutral-600">Sur présentation d'un justificatif</p>
               </div>
               <div className="price-card">
@@ -204,7 +194,7 @@ function App() {
                   </div>
                   <div className="flex items-center">
                     <Clock className="text-amber-700 mr-3 flex-shrink-0" />
-                    <p className="text-neutral-700">Lundi - Vendredi: 9h00 - 19h00</p>
+                    <p className="text-neutral-700">Mardi - Vendredi: 9h00 - 19h30</p>
                   </div>
                   <p className="text-neutral-600 mt-6">
                     Dans un cadre calme et chaleureux, conçu pour favoriser l’écoute et la détente, je vous accueillerai avec le sourire. Petite précision : le cabinet se trouve à l'étage, sans ascenseur, mais les escaliers sont accessibles !
