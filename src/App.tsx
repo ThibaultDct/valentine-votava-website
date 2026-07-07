@@ -84,7 +84,7 @@ function App() {
                   Forte d’une expérience en libéral et dans l’accompagnement éducatif et social, je m’engage auprès des enfants, adolescents et adultes dans un cadre thérapeutique bienveillant et authentique. Mon parcours m’a permis de travailler avec des familles, des demandeurs d’emploi et des publics confrontés à des défis variés, notamment le handicap, les troubles anxieux, les troubles du neurodéveloppement ou encore les traumatismes psychiques. 
                 </p>
                 <p className="text-neutral-700 mb-6">
-                  Actuellement, je fais partie du projet Cab’Atypique, qui soutient les familles face aux complexités des troubles du neurodéveloppement. En parallèle, je poursuis des formations en psychotrauma, en autisme, ainsi qu’en santé naturelle, pour explorer des alternatives et enrichir ma pratique clinique. Je conçois et mets en place des projets innovants, tels que la thérapie par le jeu vidéo ou la création d'une association pour favoriser le lien social en ligne aux divers besoins de mes patients.
+                  Je poursuis des formations en psychotrauma, en autisme, ainsi qu’en santé naturelle, pour explorer des alternatives et enrichir ma pratique clinique. Je conçois et mets en place des projets innovants, tels que la thérapie par le jeu vidéo ou la création d'une association pour favoriser le lien social en ligne aux divers besoins de mes patients.
                 </p>
                 <div className="bg-amber-50 p-6 rounded-lg">
                   <h3 className="text-xl font-serif text-amber-900 mb-4">Formation</h3>
