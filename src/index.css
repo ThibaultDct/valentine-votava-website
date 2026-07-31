@@ -2,48 +2,140 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Source+Sans+Pro:wght@400;600&display=swap');
-
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* La navigation est collante : sans ça, les ancres passent dessous. */
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
   }
-  
+
   body {
-    font-family: 'Source Sans Pro', sans-serif;
+    @apply bg-amber-50 font-sans text-stone-700 antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.7;
   }
-  
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif text-amber-900;
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+
+  /* Les titres longs ne se coupent plus en un mot orphelin */
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-amber-600 ring-offset-2 ring-offset-amber-50;
+  }
+
+  ::selection {
+    @apply bg-amber-200 text-amber-900;
   }
 }
 
 @layer components {
+  /* ---------- Repères de section ---------- */
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-eyebrow text-amber-700;
+  }
+
+  /* Filet décoratif court, sous les titres */
+  .rule {
+    @apply block h-px w-12 bg-amber-300;
+  }
+
+  /* ---------- Boutons ---------- */
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold
+      transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .btn-primary {
+    @apply bg-amber-800 text-amber-50 shadow-soft hover:bg-amber-900 hover:shadow-lift;
+  }
+
+  .btn-secondary {
+    @apply border border-amber-300 bg-white/70 text-amber-900 hover:border-amber-700 hover:bg-white;
+  }
+
+  .btn-ghost {
+    @apply text-amber-800 hover:bg-amber-100/70;
+  }
+
+  .btn-sm {
+    @apply px-4 py-2 text-sm;
+  }
+
+  /* ---------- Surfaces ---------- */
+
+  .card {
+    @apply rounded-2xl border border-amber-100 bg-white shadow-soft;
+  }
+
+  .card-interactive {
+    @apply card transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-200 hover:shadow-lift;
+  }
+
+  /* ---------- Navigation ---------- */
+
   .nav-link {
-    @apply px-4 py-2 text-neutral-700 hover:text-amber-800 transition-colors relative;
+    @apply relative rounded-full px-3 py-2 text-stone-600 transition-colors hover:text-amber-800;
   }
 
-  .nav-link::after {
+  .nav-link-active {
+    @apply text-amber-900;
+  }
+
+  .nav-link-active::after {
     content: '';
-    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-amber-700 transition-all duration-300;
+    @apply absolute inset-x-3 bottom-1 h-px bg-amber-600;
   }
 
-  .nav-link:hover::after {
-    @apply w-full;
-  }
+  /* ---------- Apparition au défilement ---------- */
 
-  .price-card {
-    @apply bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1;
-  }
-
-  .section-fade {
+  .section-fade > * {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transform: translateY(1.5rem);
+    transition:
+      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .section-fade.visible {
+  .section-fade.visible > * {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
+  }
+}
+
+@layer utilities {
+  /* Filigrane Psi, en fond de section */
+  .psi-watermark::before {
+    content: 'Ψ';
+    @apply pointer-events-none absolute select-none font-serif leading-none text-amber-900/[0.035];
+    font-size: 28rem;
+  }
+}
+
+/* Respect des préférences système : aucune animation d'apparition */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .section-fade > *,
+  .section-fade.visible > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
