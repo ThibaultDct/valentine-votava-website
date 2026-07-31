@@ -1,11 +1,5 @@
 import React, { useState } from 'react';
-import { Resend } from 'resend';
 import { Send } from 'lucide-react';
-
-// Initialize Resend only if API key is available
-const resend = import.meta.env.VITE_RESEND_API_KEY
-  ? new Resend(import.meta.env.VITE_RESEND_API_KEY)
-  : null;
 
 const fieldClass =
   'w-full rounded-xl border border-amber-200 bg-amber-50/40 px-4 py-3 text-stone-800 transition-colors placeholder:text-stone-400 focus:border-amber-600 focus:bg-white focus:outline-none';
@@ -22,24 +16,16 @@ export function ContactForm() {
     e.preventDefault();
     setStatus('sending');
 
-    if (!resend) {
-      console.error('Resend API key not configured');
-      setStatus('error');
-      return;
-    }
-
     try {
-      await resend.emails.send({
-        from: 'no-reply@votava-psychologue.fr',
-        to: 'contact@votava-psychologue.fr',
-        subject: 'Message reçu depuis votre site internet',
-        html: `
-          <h2>Nouveau message de ${formData.name}</h2>
-          <p><strong>De:</strong> ${formData.name} (${formData.email})</p>
-          <p><strong>Message:</strong></p>
-          <p>${formData.message.replace(/\n/g, '<br>')}</p>
-        `,
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
       });
+
+      if (!response.ok) {
+        throw new Error(`Request failed with status ${response.status}`);
+      }
 
       setStatus('success');
       setFormData({ name: '', email: '', message: '' });
@@ -67,6 +53,7 @@ export function ContactForm() {
           value={formData.name}
           onChange={handleChange}
           required
+          maxLength={100}
           className={fieldClass}
         />
       </div>
@@ -82,6 +69,7 @@ export function ContactForm() {
           value={formData.email}
           onChange={handleChange}
           required
+          maxLength={254}
           className={fieldClass}
         />
       </div>
@@ -96,6 +84,7 @@ export function ContactForm() {
           value={formData.message}
           onChange={handleChange}
           required
+          maxLength={5000}
           rows={5}
           className={`${fieldClass} resize-y`}
         />
