@@ -14,7 +14,10 @@ interface Contact {
 interface ContactGroup {
   title: string;
   icon: typeof Stethoscope;
+  /** Signalé en rouge : urgence vitale ou risque suicidaire */
   critical?: boolean;
+  /** Occupe toute la largeur de la grille */
+  wide?: boolean;
   contacts: Contact[];
 }
 
@@ -25,6 +28,7 @@ const GROUPS: ContactGroup[] = [
   {
     title: 'En première intention',
     icon: Stethoscope,
+    wide: true,
     contacts: [
       {
         name: 'Votre médecin traitant',
@@ -110,20 +114,20 @@ const GROUPS: ContactGroup[] = [
 export function EmergencyContacts() {
   return (
     <div className="max-w-5xl mx-auto">
-      <p className="text-neutral-700 text-center max-w-2xl mx-auto">
+      <p className="max-w-prose text-stone-600">
         En cas d'urgence ou si votre sécurité, ou celle d'un proche, est en danger, ne restez pas
         seul(e). Les services ci-dessous sont disponibles pour vous orienter et vous accompagner.
       </p>
 
       {/* Le message le plus important de la section : il passe en premier */}
-      <div className="mt-8 rounded-lg border-l-4 border-red-500 bg-red-50 p-6">
+      <div className="mt-8 rounded-2xl border border-red-200 bg-red-50/70 p-6 md:p-7">
         <div className="flex gap-4">
           <AlertTriangle className="w-6 h-6 flex-shrink-0 text-red-600" aria-hidden="true" />
           <div className="space-y-3">
             <p className="font-semibold text-red-900">
               Mon cabinet ne propose pas de permanence d'urgence.
             </p>
-            <p className="text-neutral-700">
+            <p className="text-stone-700">
               Si vous ressentez un risque de passage à l'acte, si vous avez des idées suicidaires
               envahissantes ou si l'état psychique d'un proche vous inquiète fortement, rendez-vous
               sans attendre aux urgences du CHU ou du centre hospitalier le plus proche, ou
@@ -142,12 +146,12 @@ export function EmergencyContacts() {
       </div>
 
       <div className="mt-10 grid gap-6 md:grid-cols-2">
-        {GROUPS.map(({ title, icon: Icon, critical, contacts }) => (
+        {GROUPS.map(({ title, icon: Icon, critical, wide, contacts }) => (
           <section
             key={title}
-            className={`bg-white rounded-lg shadow-md p-6 ${critical ? 'md:col-span-2' : ''}`}
+            className={`card p-6 md:p-7 ${critical || wide ? 'md:col-span-2' : ''}`}
           >
-            <h3 className="flex items-center gap-3 font-serif text-xl text-amber-900">
+            <h3 className="flex items-center gap-3 text-xl">
               <Icon
                 className={`w-5 h-5 flex-shrink-0 ${critical ? 'text-red-600' : 'text-amber-700'}`}
                 aria-hidden="true"
@@ -178,8 +182,8 @@ export function EmergencyContacts() {
                     </span>
                   )}
                   <span className="min-w-0">
-                    <strong className="font-semibold text-neutral-800">{name}</strong>
-                    {description && <span className="block text-sm text-neutral-600">{description}</span>}
+                    <strong className="font-semibold text-stone-800">{name}</strong>
+                    {description && <span className="mt-0.5 block text-sm text-stone-500">{description}</span>}
                   </span>
                 </li>
               ))}
@@ -189,14 +193,14 @@ export function EmergencyContacts() {
       </div>
 
       {/* Psycom */}
-      <div className="mt-6 bg-white rounded-lg shadow-md p-6">
-        <h3 className="font-serif text-xl text-amber-900">Besoin d'une écoute spécifique ?</h3>
-        <p className="mt-3 text-neutral-700">
+      <div className="card mt-6 p-6 md:p-8">
+        <h3 className="text-xl">Besoin d'une écoute spécifique ?</h3>
+        <p className="mt-3 max-w-prose text-stone-600">
           Il existe de nombreuses lignes d'écoute gratuites, anonymes et confidentielles selon votre
           situation : jeunes, étudiants, addictions, violences, deuil, proches, LGBTQIA+, maladies,
           aidants…
         </p>
-        <p className="mt-3 text-neutral-700">
+        <p className="mt-3 max-w-prose text-stone-600">
           Psycom a pour mission de recenser les ressources disponibles afin de faciliter la
           recherche d'aide pour des problèmes de santé mentale. Sa rubrique «&nbsp;S'orienter&nbsp;»
           rassemble un guide des lignes d'écoute, un guide des associations et de nombreuses autres
@@ -206,10 +210,10 @@ export function EmergencyContacts() {
           href="https://www.psycom.org/sorienter/"
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-5 inline-flex items-center gap-2 rounded-lg bg-amber-700 px-5 py-2.5 text-white transition-colors hover:bg-amber-800"
+          className="btn btn-secondary mt-6"
         >
           Consulter le guide Psycom
-          <ExternalLink className="w-4 h-4" aria-hidden="true" />
+          <ExternalLink className="h-4 w-4" aria-hidden="true" />
         </a>
       </div>
     </div>

@@ -6,7 +6,7 @@ const dotClass = (isLast: boolean) =>
   }`;
 
 const labelClass = (isLast: boolean) =>
-  isLast ? 'font-semibold text-amber-900' : 'text-neutral-600';
+  isLast ? 'font-semibold text-amber-900' : 'text-stone-500';
 
 /**
  * Illustration de la ligne de vie utilisée en ICV.
@@ -19,7 +19,7 @@ export function LifeLine() {
   const halfColumn = 100 / STEPS.length / 2;
 
   return (
-    <figure className="bg-amber-50 rounded-lg p-6 my-2">
+    <figure className="my-2 rounded-2xl border border-amber-100 bg-amber-50/70 p-6">
       <figcaption className="text-sm font-semibold text-amber-800 mb-6">
         Exemple d'une ligne de vie
       </figcaption>

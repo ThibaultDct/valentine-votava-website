@@ -45,12 +45,12 @@ const FIRST_CONSULTATION = [
 
 export function Faq() {
   return (
-    <div className="max-w-3xl mx-auto space-y-4">
+    <div className="space-y-4">
       <AccordionItem title="Comment se passe une première consultation de psychologie ?">
         <dl className="space-y-4">
           {FIRST_CONSULTATION.map(({ audience, text }) => (
             <div key={audience}>
-              <dt className="font-semibold text-amber-800">{audience}</dt>
+              <dt className="font-semibold text-amber-900">{audience}</dt>
               <dd className="mt-1">{text}</dd>
             </div>
           ))}
@@ -61,7 +61,7 @@ export function Faq() {
         <dl className="space-y-4">
           {PSYCHOLOGIST_TYPES.map(({ name, description }) => (
             <div key={name}>
-              <dt className="font-semibold text-amber-800">{name}</dt>
+              <dt className="font-semibold text-amber-900">{name}</dt>
               <dd className="mt-1">{description}</dd>
             </div>
           ))}

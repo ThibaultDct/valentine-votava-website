@@ -7,38 +7,43 @@ import { DISCORD_INVITE_URL, DISCORD_USERNAME } from '../../constants';
  */
 export function TeenContact() {
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 md:p-8">
-      <div className="flex flex-col sm:flex-row gap-5">
-        <span
-          className="flex-shrink-0 w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center"
-          aria-hidden="true"
-        >
-          <DiscordIcon className="w-6 h-6 text-amber-700" />
-        </span>
+    <div className="card overflow-hidden">
+      <div className="flex flex-col gap-8 p-6 md:p-8 lg:flex-row lg:items-center">
+        <div className="flex flex-1 gap-6">
+          <span
+            className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-amber-100"
+            aria-hidden="true"
+          >
+            <DiscordIcon className="h-6 w-6 text-amber-800" />
+          </span>
 
-        <div>
-          <h3 className="font-serif text-xl text-amber-900">
-            Tu es adolescent(e) et la relation avec tes parents est compliquée&nbsp;?
-          </h3>
-          <p className="mt-3 text-neutral-700">
-            Si tu ressens le besoin de consulter un psychologue, n'hésite pas à me contacter. Tu
-            peux me poser tes questions en toute simplicité sur mon Discord professionnel, afin
-            d'échanger avant une éventuelle prise de rendez-vous.
-          </p>
+          <div>
+            <h3 className="text-xl">
+              Tu es adolescent(e) et la relation avec tes parents est compliquée&nbsp;?
+            </h3>
+            <p className="mt-3 text-stone-600">
+              Si tu ressens le besoin de consulter un psychologue, n'hésite pas à me contacter. Tu
+              peux me poser tes questions en toute simplicité sur mon Discord professionnel, afin
+              d'échanger avant une éventuelle prise de rendez-vous.
+            </p>
+          </div>
+        </div>
 
-          <a
+        <div className="flex-shrink-0 lg:text-center">
+          {/* <a
             href={DISCORD_INVITE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-5 inline-flex items-center gap-2 rounded-full bg-[#5865F2] px-5 py-2.5 font-semibold text-white transition-colors hover:bg-[#4752C4]"
+            className="btn bg-[#5865F2] text-white shadow-soft hover:bg-[#4752C4] hover:shadow-lift"
           >
-            <DiscordIcon className="w-5 h-5" />
+            <DiscordIcon className="h-5 w-5" />
             Rejoindre le Discord
-          </a>
+          </a> */}
 
-          <p className="mt-4 text-sm text-neutral-600">
-            Ou en message privé, si tu préfères :{' '}
-            <code className="inline-block rounded bg-amber-50 px-2 py-0.5 font-mono text-amber-900 break-all">
+          <p className="mt-4 text-sm text-stone-500">
+            Mon nom d'utilisateur :{' '}
+            <hr/>
+            <code className="inline-block break-all rounded-lg bg-amber-50 px-2 py-0.5 font-mono text-amber-900">
               {DISCORD_USERNAME}
             </code>
           </p>

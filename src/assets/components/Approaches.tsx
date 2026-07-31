@@ -3,17 +3,47 @@ import { LifeLine } from './LifeLine';
 import { ActMatrix } from './ActMatrix';
 import { PinterestResources } from './PinterestResources';
 
+const HYPNOSIS_STEPS = [
+  {
+    step: 'Définir un objectif',
+    text: 'nous déterminons ensemble ce que vous souhaitez travailler.',
+  },
+  {
+    step: "L'induction",
+    text: 'je vous guide pour focaliser progressivement votre attention.',
+  },
+  {
+    step: 'La transe hypnotique',
+    text: "c'est un état naturel de conscience modifiée, dans lequel votre attention est davantage tournée vers votre monde intérieur tout en restant conscient de ce qui vous entoure.",
+  },
+  {
+    step: 'Les suggestions thérapeutiques',
+    text: "je propose des pistes de changement en lien avec votre objectif (par exemple retrouver un sentiment d'apaisement, de sécurité ou de confiance). Vous restez libre d'y adhérer ou non.",
+  },
+  {
+    step: 'Le retour',
+    text: "vous revenez progressivement à un état d'éveil habituel.",
+  },
+];
+
 export function Approaches() {
   return (
     <>
-      {/* Ma formation de base */}
-      <div className="max-w-3xl mx-auto mb-16">
-        <p className="text-center text-sm font-semibold uppercase tracking-wide text-amber-700">
-          Ma formation de base
-        </p>
-        <h3 className="mt-2 text-center font-serif text-2xl text-amber-900">La psychothérapie</h3>
+      {/* Ma formation de base — mise en page éditoriale, titre à gauche, texte à droite */}
+      <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+        <div className="lg:col-span-5">
+          <div className="lg:sticky lg:top-28">
+            <p className="eyebrow">Ma formation de base</p>
+            <h3 className="mt-3 text-2xl md:text-3xl">La psychothérapie</h3>
+            <span className="rule mt-5" aria-hidden="true" />
+            <p className="mt-6 text-stone-600">
+              Un espace de parole, d'écoute et de réflexion, où vous avancez à votre rythme dans un
+              cadre confidentiel.
+            </p>
+          </div>
+        </div>
 
-        <div className="mt-8 space-y-4 text-neutral-700">
+        <div className="space-y-5 text-stone-600 lg:col-span-7">
           <p>
             La psychothérapie est un accompagnement qui vise à mieux comprendre les difficultés que
             vous rencontrez, à apaiser votre souffrance et à retrouver un meilleur équilibre au
@@ -21,10 +51,10 @@ export function Approaches() {
             votre rythme dans un cadre confidentiel et bienveillant.
           </p>
           <p>
-            Contrairement aux idées reçues, consulter un psychologue ne signifie pas être «&nbsp;faible&nbsp;»
-            ou «&nbsp;fou&nbsp;». Il est possible d'entreprendre une psychothérapie pour traverser une période
-            difficile, mieux se connaître, faire face à un changement de vie ou traiter une
-            souffrance psychique plus installée.
+            Contrairement aux idées reçues, consulter un psychologue ne signifie pas être
+            «&nbsp;faible&nbsp;» ou «&nbsp;fou&nbsp;». Il est possible d'entreprendre une
+            psychothérapie pour traverser une période difficile, mieux se connaître, faire face à un
+            changement de vie ou traiter une souffrance psychique plus installée.
           </p>
           <p>
             Chaque psychothérapie est unique. Les objectifs sont définis ensemble et évoluent au fil
@@ -42,13 +72,18 @@ export function Approaches() {
       </div>
 
       {/* Ma boîte à outils */}
-      <div className="max-w-3xl mx-auto">
-        <h3 className="text-center font-serif text-2xl text-amber-900">Ma boîte à outils</h3>
-        <p className="mt-3 mb-8 text-center text-neutral-600">
-          Trois méthodes que je mobilise selon votre situation et vos objectifs.
-        </p>
+      <div className="mt-24 border-t border-amber-200/70 pt-16">
+        <div className="max-w-2xl">
+          <p className="eyebrow">Ma boîte à outils</p>
+          <h3 className="mt-3 text-2xl md:text-3xl">Trois méthodes complémentaires</h3>
+          <span className="rule mt-5" aria-hidden="true" />
+          <p className="mt-6 text-stone-600">
+            Je les mobilise selon votre situation et vos objectifs, toujours à l'intérieur d'une
+            démarche psychothérapeutique.
+          </p>
+        </div>
 
-        <div className="space-y-4">
+        <div className="mt-10 space-y-4">
           <AccordionItem
             title="ICV — Intégration du Cycle de la Vie"
             subtitle="Traumatismes, difficultés d'attachement, souffrances émotionnelles"
@@ -82,10 +117,7 @@ export function Approaches() {
             </p>
           </AccordionItem>
 
-          <AccordionItem
-            title="Hypnose thérapeutique"
-            subtitle="Anxiété, douleurs, phobies, stress"
-          >
+          <AccordionItem title="Hypnose thérapeutique" subtitle="Anxiété, douleurs, phobies, stress">
             <p>
               L'hypnose thérapeutique est un outil qui peut être utilisé dans l'accompagnement de
               nombreuses problématiques, comme l'anxiété, certaines douleurs, les phobies, le stress
@@ -96,44 +128,23 @@ export function Approaches() {
             <p className="font-semibold text-amber-900">
               Une séance d'hypnose se déroule généralement en plusieurs étapes :
             </p>
-            <ol className="space-y-3 list-none">
-              {[
-                {
-                  step: 'Définir un objectif',
-                  text: 'nous déterminons ensemble ce que vous souhaitez travailler.',
-                },
-                {
-                  step: "L'induction",
-                  text: 'je vous guide pour focaliser progressivement votre attention.',
-                },
-                {
-                  step: 'La transe hypnotique',
-                  text: "c'est un état naturel de conscience modifiée, dans lequel votre attention est davantage tournée vers votre monde intérieur tout en restant conscient de ce qui vous entoure.",
-                },
-                {
-                  step: 'Les suggestions thérapeutiques',
-                  text: "je propose des pistes de changement en lien avec votre objectif (par exemple retrouver un sentiment d'apaisement, de sécurité ou de confiance). Vous restez libre d'y adhérer ou non.",
-                },
-                {
-                  step: 'Le retour',
-                  text: "vous revenez progressivement à un état d'éveil habituel.",
-                },
-              ].map(({ step, text }, index) => (
+            <ol className="list-none space-y-4">
+              {HYPNOSIS_STEPS.map(({ step, text }, index) => (
                 <li key={step} className="flex gap-4">
                   <span
-                    className="flex-shrink-0 w-7 h-7 rounded-full bg-amber-100 text-amber-800 font-semibold flex items-center justify-center text-sm"
+                    className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-amber-100 text-sm font-semibold text-amber-800"
                     aria-hidden="true"
                   >
                     {index + 1}
                   </span>
                   <span>
-                    <strong className="text-amber-900 font-semibold">{step}</strong> : {text}
+                    <strong className="font-semibold text-amber-900">{step}</strong> : {text}
                   </span>
                 </li>
               ))}
             </ol>
 
-            <p className="bg-amber-50 rounded-lg p-4">
+            <p className="rounded-xl border border-amber-100 bg-amber-50/70 p-4">
               Contrairement aux idées reçues, <strong>vous ne perdez jamais le contrôle</strong>{' '}
               pendant une séance d'hypnose. Vous restez conscient de ce qui se passe, libre de
               parler, de bouger ou d'interrompre la séance si vous le souhaitez.
@@ -163,7 +174,7 @@ export function Approaches() {
               plus laisser nos peurs ou nos pensées diriger nos choix.
             </p>
 
-            <p className="border-l-4 border-amber-300 bg-amber-50 rounded-r-lg p-4">
+            <p className="rounded-r-xl border-l-2 border-amber-400 bg-amber-50/70 py-3 pl-5 pr-4 italic">
               Par exemple, si une personne est mordue par un chien, elle peut en venir à penser que
               tous les chiens sont dangereux et commencer à les éviter systématiquement. L'ACT ne
               cherche pas à convaincre cette personne que cette pensée est fausse, mais à l'aider à
