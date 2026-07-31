@@ -1,16 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import { Mail, MapPin, Phone, Clock, CreditCard, Banknote } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Mail, MapPin, Phone, Clock, CreditCard, Banknote, ExternalLink, AlertTriangle } from 'lucide-react';
 import { ImageCarousel } from './assets/components/ImageCarousel';
 import photo from './assets/images/Moi.jpeg';
 import cabinet1 from './assets/images/cabinet/cabinet1.jpeg';
 import cabinet2 from './assets/images/cabinet/cabinet2.jpeg';
-import cabinet3 from './assets/images/cabinet/cabinet3.jpeg';
 import cabinet4 from './assets/images/cabinet/cabinet4.jpeg';
 import cabinet5 from './assets/images/cabinet/cabinet5.jpeg';
 import doctolib from './assets/images/banniere_linkedin_psychologue.jpg';
-import logo from './assets/images/logo.png';
-import psi from './assets/images/psi.png';
 import { ContactForm } from './assets/components/ContactForm';
+import { Navigation } from './assets/components/Navigation';
+import { DiscordIcon, PinterestIcon } from './assets/components/BrandIcons';
+import { BLOG_URL, DISCORD_INVITE_URL, PINTEREST_URL } from './constants';
+import { Approaches } from './assets/components/Approaches';
+import { Faq } from './assets/components/Faq';
+import { TeenContact } from './assets/components/TeenContact';
+import { EmergencyContacts } from './assets/components/EmergencyContacts';
 
 function App() {
   const [activeSection, setActiveSection] = useState('accueil');
@@ -38,28 +42,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-amber-50">
-      {/* Navigation */}
-      <nav className="sticky top-0 bg-white/90 backdrop-blur-sm shadow-sm z-50">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center py-4">
-            <div className="flex items-center">
-              <h1 className="text-2xl font-serif text-amber-900">Valentine VOTAVA</h1>
-              <img
-                src={psi}
-                alt="Symbôle Psi"
-                className="w-[25px] h-[25px] object-cover ml-3"
-              />
-            </div>
-            <div className="hidden md:flex space-x-4">
-              <a href="#accueil" className={`nav-link ${activeSection === 'accueil' ? 'text-amber-800' : ''}`}>Accueil</a>
-              <a href="#presentation" className={`nav-link ${activeSection === 'presentation' ? 'text-amber-800' : ''}`}>Qui suis-je</a>
-              <a href="#tarifs" className={`nav-link ${activeSection === 'tarifs' ? 'text-amber-800' : ''}`}>Tarifs</a>
-              <a href="#cabinet" className={`nav-link ${activeSection === 'cabinet' ? 'text-amber-800' : ''}`}>Le Cabinet</a>
-              <a href="#contact" className={`nav-link ${activeSection === 'contact' ? 'text-amber-800' : ''}`}>Contact</a>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Navigation activeSection={activeSection} />
 
       {/* Main Content */}
       <main>
@@ -81,7 +64,7 @@ function App() {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <p className="text-neutral-700 mb-6">
-                  Forte d’une expérience en libéral et dans l’accompagnement éducatif et social, je m’engage auprès des enfants, adolescents et adultes dans un cadre thérapeutique bienveillant et authentique. Mon parcours m’a permis de travailler avec des familles, des demandeurs d’emploi et des publics confrontés à des défis variés, notamment le handicap, les troubles anxieux, les troubles du neurodéveloppement ou encore les traumatismes psychiques. 
+                  Forte d’une expérience en libéral et dans l’accompagnement éducatif et social, je m’engage auprès des enfants, adolescents et adultes dans un cadre thérapeutique bienveillant et authentique. Mon parcours m’a permis de travailler avec des familles, des demandeurs d’emploi et des publics confrontés à des défis variés, notamment le handicap, les troubles anxieux, les troubles du neurodéveloppement ou encore les traumatismes psychiques.
                 </p>
                 <p className="text-neutral-700 mb-6">
                   Je poursuis des formations en psychotrauma, en autisme, ainsi qu’en santé naturelle, pour explorer des alternatives et enrichir ma pratique clinique. Je conçois et mets en place des projets innovants, tels que la thérapie par le jeu vidéo ou la création d'une association pour favoriser le lien social en ligne aux divers besoins de mes patients.
@@ -126,8 +109,20 @@ function App() {
           </div>
         </section>
 
+        {/* Mon approche */}
+        <section id="approche" className="section-fade py-20 bg-amber-50">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-serif text-amber-900 mb-4 text-center">Mon approche</h2>
+            <p className="text-neutral-600 text-center max-w-2xl mx-auto mb-16">
+              Chaque accompagnement est construit sur mesure. Voici la façon dont je travaille et
+              les méthodes sur lesquelles je m'appuie.
+            </p>
+            <Approaches />
+          </div>
+        </section>
+
         {/* Tarifs */}
-        <section id="tarifs" className="section-fade py-20 bg-amber-50">
+        <section id="tarifs" className="section-fade py-20 bg-white">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-serif text-amber-900 mb-12 text-center">Tarifs des Consultations</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -148,18 +143,26 @@ function App() {
                   comme le RSA, l'ASS ou autres aides sociales)</p>
               </div>
             </div>
-            <div className="mt-8 bg-white p-6 rounded-lg shadow-md">
+            <div className="mt-8 bg-amber-50 p-6 rounded-lg">
               <h3 className="text-xl text-amber-800 mb-4">Téléconsultation</h3>
               <p className="text-neutral-700 mb-4">
                 Les téléconsultations sont possibles.
               </p>
               <h3 className="text-xl text-amber-800 mb-4">Remboursements</h3>
                 <p className="text-neutral-700 mb-4">
-                  Consultation non remboursée par l'Assurance Maladie
+                  Consultation non remboursée par l'Assurance Maladie. Je ne fais pas partie du
+                  dispositif Mon soutien psy, mais certaines mutuelles peuvent prendre une partie
+                  de la séance en charge sur présentation de la facture.
                 </p>
-              <div className="flex items-center space-x-8 mt-6 pt-6 border-t border-amber-100">
+              <h3 className="text-xl text-amber-800 mb-4">Annulation et report</h3>
+                <p className="text-neutral-700 mb-4">
+                  Toute annulation ou demande de report doit être effectuée au moins 48 heures avant
+                  l'heure prévue de la séance. À défaut, la séance sera facturée dans son
+                  intégralité, sauf en cas de force majeure.
+                </p>
+              <div className="flex flex-wrap items-center gap-x-8 gap-y-4 mt-6 pt-6 border-t border-amber-200">
                 <h4 className="text-lg text-amber-800">Moyens de paiement acceptés:</h4>
-                <div className="flex space-x-4">
+                <div className="flex flex-wrap gap-4">
                   <div className="flex items-center text-neutral-700">
                     <CreditCard className="w-5 h-5 mr-2" />
                     <span>Carte bancaire</span>
@@ -182,7 +185,7 @@ function App() {
         </section>
 
         {/* Le Cabinet */}
-        <section id="cabinet" className="section-fade py-20 bg-white">
+        <section id="cabinet" className="section-fade py-20 bg-amber-50">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-serif text-amber-900 mb-12 text-center">Le Cabinet</h2>
             <div className="grid md:grid-cols-2 gap-12">
@@ -199,10 +202,25 @@ function App() {
                   <p className="text-neutral-600 mt-6">
                     Dans un cadre calme et chaleureux, conçu pour favoriser l’écoute et la détente, je vous accueillerai avec le sourire. Petite précision : le cabinet se trouve à l'étage, sans ascenseur, mais les escaliers sont accessibles !
                   </p>
+                  <p className="text-neutral-600">
+                    Le cabinet dispose d'un parking : vous pouvez vous garer sur les places
+                    «&nbsp;Cab'Atypique&nbsp;».
+                  </p>
                 </div>
               </div>
               <ImageCarousel images={cabinetImages} />
             </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section id="faq" className="section-fade py-20 bg-white">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-serif text-amber-900 mb-4 text-center">Questions fréquentes</h2>
+            <p className="text-neutral-600 text-center max-w-2xl mx-auto mb-12">
+              Les questions qui reviennent le plus souvent avant un premier rendez-vous.
+            </p>
+            <Faq />
           </div>
         </section>
 
@@ -219,24 +237,84 @@ function App() {
                 <div className="space-y-6">
                   <div className="flex items-center">
                     <Phone className="text-amber-700 mr-3" />
-                    <p className="text-neutral-700">06 65 14 92 39</p>
+                    <a href="tel:0665149239" className="text-neutral-700 hover:text-amber-800 transition-colors">06 65 14 92 39</a>
                   </div>
                   <div className="flex items-center">
                     <Mail className="text-amber-700 mr-3" />
-                    <p className="text-neutral-700">contact@votava-psychologue.fr</p>
+                    <a href="mailto:contact@votava-psychologue.fr" className="text-neutral-700 hover:text-amber-800 transition-colors">contact@votava-psychologue.fr</a>
                   </div>
                 </div>
               </div>
               <ContactForm />
             </div>
+
+            <div className="mt-12 max-w-4xl mx-auto">
+              <TeenContact />
+            </div>
+          </div>
+        </section>
+
+        {/* Urgences et contacts utiles */}
+        <section id="urgences" className="section-fade py-20 bg-neutral-100">
+          <div className="container mx-auto px-4">
+            <h2 className="flex items-center justify-center gap-3 text-3xl font-serif text-amber-900 mb-10 text-center">
+              <AlertTriangle className="w-7 h-7 text-red-600 flex-shrink-0" aria-hidden="true" />
+              Urgences et contacts utiles
+            </h2>
+            <EmergencyContacts />
           </div>
         </section>
       </main>
 
       {/* Footer */}
       <footer className="bg-amber-900 text-amber-50">
-        <div className="container mx-auto px-4 py-8">
-          <p className="text-center">© 2024 Valentine VOTAVA - Psychologue Clinicienne - Psychothérapeute - RPPS 10009489849</p>
+        <div className="container mx-auto px-4 py-10">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div>
+              <p className="font-serif text-lg">Valentine VOTAVA</p>
+              <p className="text-sm text-amber-200">Psychologue clinicienne, Psychothérapeute</p>
+            </div>
+
+            <div className="flex flex-col gap-4 md:items-end">
+              <nav aria-label="Liens de bas de page" className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+                <a href={BLOG_URL} className="flex items-center gap-1.5 text-amber-100 underline underline-offset-2 hover:text-white">
+                  Blog
+                  <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
+                </a>
+                <a href="#faq" className="text-amber-100 underline underline-offset-2 hover:text-white">
+                  Questions fréquentes
+                </a>
+                <a href="#urgences" className="text-amber-100 underline underline-offset-2 hover:text-white">
+                  Urgences et contacts utiles
+                </a>
+              </nav>
+
+              <div className="flex items-center gap-3">
+                <a
+                  href={DISCORD_INVITE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Rejoindre le serveur Discord (nouvelle fenêtre)"
+                  className="flex items-center justify-center w-10 h-10 rounded-full bg-amber-800 text-amber-100 transition-colors hover:bg-amber-50 hover:text-amber-900"
+                >
+                  <DiscordIcon className="w-5 h-5" />
+                </a>
+                <a
+                  href={PINTEREST_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Voir mes tableaux Pinterest (nouvelle fenêtre)"
+                  className="flex items-center justify-center w-10 h-10 rounded-full bg-amber-800 text-amber-100 transition-colors hover:bg-amber-50 hover:text-amber-900"
+                >
+                  <PinterestIcon className="w-5 h-5" />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <p className="mt-8 pt-6 border-t border-amber-800 text-center text-sm text-amber-200">
+            © 2024 Valentine VOTAVA - Psychologue Clinicienne - Psychothérapeute - RPPS 10009489849
+          </p>
         </div>
       </footer>
     </div>
