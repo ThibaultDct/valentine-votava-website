@@ -1,10 +1,4 @@
 import React, { useState } from 'react';
-import { Resend } from 'resend';
-
-// Initialize Resend only if API key is available
-const resend = import.meta.env.VITE_RESEND_API_KEY 
-  ? new Resend(import.meta.env.VITE_RESEND_API_KEY)
-  : null;
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
@@ -18,24 +12,16 @@ export function ContactForm() {
     e.preventDefault();
     setStatus('sending');
 
-    if (!resend) {
-      console.error('Resend API key not configured');
-      setStatus('error');
-      return;
-    }
-
     try {
-      await resend.emails.send({
-        from: 'no-reply@votava-psychologue.fr',
-        to: 'contact@votava-psychologue.fr',
-        subject: 'Message reçu depuis votre site internet',
-        html: `
-          <h2>Nouveau message de ${formData.name}</h2>
-          <p><strong>De:</strong> ${formData.name} (${formData.email})</p>
-          <p><strong>Message:</strong></p>
-          <p>${formData.message.replace(/\n/g, '<br>')}</p>
-        `,
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
       });
+
+      if (!response.ok) {
+        throw new Error(`Request failed with status ${response.status}`);
+      }
 
       setStatus('success');
       setFormData({ name: '', email: '', message: '' });
@@ -61,6 +47,7 @@ export function ContactForm() {
           value={formData.name}
           onChange={handleChange}
           required
+          maxLength={100}
           className="w-full p-3 border border-amber-200 rounded-lg focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-colors"
         />
       </div>
@@ -73,6 +60,7 @@ export function ContactForm() {
           value={formData.email}
           onChange={handleChange}
           required
+          maxLength={254}
           className="w-full p-3 border border-amber-200 rounded-lg focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-colors"
         />
       </div>
@@ -84,6 +72,7 @@ export function ContactForm() {
           value={formData.message}
           onChange={handleChange}
           required
+          maxLength={5000}
           rows={4}
           className="w-full p-3 border border-amber-200 rounded-lg focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-colors"
         ></textarea>
