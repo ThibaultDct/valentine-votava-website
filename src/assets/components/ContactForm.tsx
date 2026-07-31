@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { Resend } from 'resend';
+import { Send } from 'lucide-react';
 
 // Initialize Resend only if API key is available
-const resend = import.meta.env.VITE_RESEND_API_KEY 
+const resend = import.meta.env.VITE_RESEND_API_KEY
   ? new Resend(import.meta.env.VITE_RESEND_API_KEY)
   : null;
+
+const fieldClass =
+  'w-full rounded-xl border border-amber-200 bg-amber-50/40 px-4 py-3 text-stone-800 transition-colors placeholder:text-stone-400 focus:border-amber-600 focus:bg-white focus:outline-none';
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
@@ -47,13 +51,15 @@ export function ContactForm() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 rounded-lg shadow-md">
+    <form onSubmit={handleSubmit} className="card space-y-5 p-6 md:p-8">
       <div>
-        <label htmlFor="name" className="block text-neutral-700 mb-2">Nom</label>
+        <label htmlFor="name" className="mb-2 block text-sm font-semibold text-amber-900">
+          Nom
+        </label>
         <input
           type="text"
           id="name"
@@ -61,11 +67,14 @@ export function ContactForm() {
           value={formData.name}
           onChange={handleChange}
           required
-          className="w-full p-3 border border-amber-200 rounded-lg focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-colors"
+          className={fieldClass}
         />
       </div>
+
       <div>
-        <label htmlFor="email" className="block text-neutral-700 mb-2">Email</label>
+        <label htmlFor="email" className="mb-2 block text-sm font-semibold text-amber-900">
+          Email
+        </label>
         <input
           type="email"
           id="email"
@@ -73,39 +82,41 @@ export function ContactForm() {
           value={formData.email}
           onChange={handleChange}
           required
-          className="w-full p-3 border border-amber-200 rounded-lg focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-colors"
+          className={fieldClass}
         />
       </div>
+
       <div>
-        <label htmlFor="message" className="block text-neutral-700 mb-2">Message</label>
+        <label htmlFor="message" className="mb-2 block text-sm font-semibold text-amber-900">
+          Message
+        </label>
         <textarea
           id="message"
           name="message"
           value={formData.message}
           onChange={handleChange}
           required
-          rows={4}
-          className="w-full p-3 border border-amber-200 rounded-lg focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-colors"
-        ></textarea>
+          rows={5}
+          className={`${fieldClass} resize-y`}
+        />
       </div>
-      <button
-        type="submit"
-        disabled={status === 'sending'}
-        className={`w-full px-6 py-3 rounded-lg transform hover:scale-105 transition-all duration-300 ${
-          status === 'sending'
-            ? 'bg-amber-400 cursor-wait'
-            : 'bg-amber-600 hover:bg-amber-700 text-white'
-        }`}
-      >
-        {status === 'sending' ? 'Envoi en cours...' : 'Envoyer'}
+
+      <button type="submit" disabled={status === 'sending'} className="btn btn-primary w-full">
+        {status === 'sending' ? 'Envoi en cours…' : 'Envoyer'}
+        {status !== 'sending' && <Send className="h-4 w-4" aria-hidden="true" />}
       </button>
 
-      {status === 'success' && (
-        <p className="text-green-600 text-center">Votre message a été envoyé avec succès !</p>
-      )}
-      {status === 'error' && (
-        <p className="text-red-600 text-center">Une erreur est survenue. Veuillez réessayer plus tard.</p>
-      )}
+      <p aria-live="polite" className="min-h-[1.5rem] text-center text-sm">
+        {status === 'success' && (
+          <span className="text-emerald-700">Votre message a bien été envoyé. À très bientôt.</span>
+        )}
+        {status === 'error' && (
+          <span className="text-red-700">
+            Une erreur est survenue. Vous pouvez aussi m'écrire directement à
+            contact@votava-psychologue.fr
+          </span>
+        )}
+      </p>
     </form>
   );
 }
