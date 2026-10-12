@@ -90,7 +90,7 @@ const PRACTICAL = [
 
 function App() {
   const [activeSection, setActiveSection] = useState('accueil');
-  const cabinetImages = [cabinet1, cabinet2, cabinet4, cabinet5, doctolib];
+  const cabinetImages = [doctolib];
 
   useEffect(() => {
     const sections = document.querySelectorAll<HTMLElement>('section[id]');
@@ -352,17 +352,11 @@ function App() {
                     <div>
                       <dt className="font-semibold text-amber-900">Stationnement</dt>
                       <dd className="text-stone-600">
-                        Un parking est à disposition : garez-vous sur les places
-                        «&nbsp;Cab'Atypique&nbsp;».
+                        Un parking est à disposition.
                       </dd>
                     </div>
                   </div>
                 </dl>
-
-                <p className="mt-8 rounded-xl border border-amber-200 bg-white/70 p-4 text-sm text-stone-600">
-                  Petite précision : le cabinet se trouve à l'étage, sans ascenseur, mais les
-                  escaliers sont accessibles.
-                </p>
               </div>
             </div>
           </div>
