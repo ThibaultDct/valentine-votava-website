@@ -193,7 +193,7 @@ function App() {
                 <div className="space-y-6">
                   <div className="flex items-center">
                     <MapPin className="text-amber-700 mr-3 flex-shrink-0" />
-                    <p className="text-neutral-700">3 rue Claude Chappe, 44470 CARQUEFOU</p>
+                    <p className="text-neutral-700">96 rue de la Loire, 44980 Sainte-Luce-sur-Loire</p>
                   </div>
                   <div className="flex items-center">
                     <Clock className="text-amber-700 mr-3 flex-shrink-0" />
