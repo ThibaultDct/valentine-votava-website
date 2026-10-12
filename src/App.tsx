@@ -481,7 +481,7 @@ function App() {
                 Psychologue clinicienne, Psychothérapeute
               </p>
               <p className="mt-6 text-sm text-amber-100/70">
-                3 rue Claude Chappe
+                96 rue de la Loire
                 <br />
                 44980 Sainte-Luce-sur-Loire
               </p>
