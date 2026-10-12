@@ -337,7 +337,7 @@ function App() {
                     <MapPin className="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-700" aria-hidden="true" />
                     <div>
                       <dt className="font-semibold text-amber-900">Adresse</dt>
-                      <dd className="text-stone-600">3 rue Claude Chappe, 44470 Carquefou</dd>
+                      <dd className="text-stone-600">96 rue de la Loire, 44980 Sainte-Luce-sur-Loire</dd>
                     </div>
                   </div>
                   <div className="flex gap-4">
@@ -489,7 +489,7 @@ function App() {
               <p className="mt-6 text-sm text-amber-100/70">
                 3 rue Claude Chappe
                 <br />
-                44470 Carquefou
+                44980 Sainte-Luce-sur-Loire
               </p>
             </div>
 

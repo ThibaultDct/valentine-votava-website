@@ -50,7 +50,7 @@ export function Hero() {
             <div className="flex items-center gap-2.5">
               <MapPin className="h-4 w-4 flex-shrink-0 text-amber-700" aria-hidden="true" />
               <dt className="sr-only">Adresse</dt>
-              <dd className="text-stone-600">3 rue Claude Chappe, Carquefou</dd>
+              <dd className="text-stone-600">96 rue de la Loire, Sainte-Luce-sur-Loire</dd>
             </div>
             <div className="flex items-center gap-2.5">
               <Clock className="h-4 w-4 flex-shrink-0 text-amber-700" aria-hidden="true" />
